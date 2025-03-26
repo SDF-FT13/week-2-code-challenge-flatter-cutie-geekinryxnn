@@ -1,5 +1,5 @@
 // Your code here
-// Fetch characters and render them in the character bar
+
 document.addEventListener("DOMContentLoaded", () => {
     const characterBar = document.getElementById("character-bar");
     const detailedInfo = document.getElementById("detailed-info");
@@ -17,7 +17,7 @@ fetch("http://localhost:3000/characters")
             characterBar.appendChild(span);
         });
 
-        // Display "Mr. Cute" by default
+        
         const mrCute = characters.find((character) => character.name === "Mr. Cute");
         if (mrCute) {
             displayCharacterDetails(mrCute);
@@ -34,7 +34,7 @@ function displayCharacterDetails(character) {
     imageElement.alt = character.name;
     voteCountElement.textContent = character.votes;
 
-    // Handle vote submission
+    
     voteForm.onsubmit = (event) => {
         event.preventDefault();
         const votesInput = document.getElementById("votes");
@@ -55,12 +55,12 @@ function displayCharacterDetails(character) {
         votesInput.value = "";
     };
 
-    // Handle vote reset
+  
     resetButton.onclick = () => {
         character.votes = 0;
         voteCountElement.textContent = character.votes;
 
-        // Reset the votes in the database
+       
         fetch(`http://localhost:3000/characters/${character.id}`, {
             method: "PATCH",
             headers: {
