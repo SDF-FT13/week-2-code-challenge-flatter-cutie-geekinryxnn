@@ -1,5 +1,5 @@
 // Your code here
-
+// Fetch characters and render them in the character bar
 document.addEventListener("DOMContentLoaded", () => {
     const characterBar = document.getElementById("character-bar");
     const detailedInfo = document.getElementById("detailed-info");
@@ -43,7 +43,7 @@ function displayCharacterDetails(character) {
             character.votes += additionalVotes;
             voteCountElement.textContent = character.votes;
 
-            // Update the votes in the database
+            
             fetch(`http://localhost:3000/characters/${character.id}`, {
                 method: "PATCH",
                 headers: {
@@ -55,12 +55,12 @@ function displayCharacterDetails(character) {
         votesInput.value = "";
     };
 
-  
+    // Handle vote reset
     resetButton.onclick = () => {
         character.votes = 0;
         voteCountElement.textContent = character.votes;
 
-       
+        // Reset the votes in the database
         fetch(`http://localhost:3000/characters/${character.id}`, {
             method: "PATCH",
             headers: {
